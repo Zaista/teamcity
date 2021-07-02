@@ -16,6 +16,7 @@ services:
       SERVER_URL: 'server:8111'
     volumes:
       - ./data/agent/config:/data/teamcity_agent/conf
+      - /var/run/docker.sock:/var/run/docker.sock
     user: '0'
     depends_on:
       - server
