@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  server:
+    image: jetbrains/teamcity-server
+    volumes:
+      - ./data/server/config:/data/teamcity_server/datadir
+      - ./data/server/logs:/opt/teamcity/logs
+    ports:
+      - 8111:8111
+    user: '0'
+
+  agent:
+    image: jetbrains/teamcity-agent
+    environment:
+      SERVER_URL: 'server:8111'
+    volumes:
+      - ./data/agent/config:/data/teamcity_agent/conf
+    user: '0'
+    depends_on:
+      - server
