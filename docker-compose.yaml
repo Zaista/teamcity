@@ -7,7 +7,7 @@ services:
       - ./data/server/config:/data/teamcity_server/datadir
       - ./data/server/logs:/opt/teamcity/logs
     ports:
-      - 8111:8111
+      - 80:8111
     user: '0'
 
   agent:
